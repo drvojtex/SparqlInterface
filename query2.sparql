@@ -1,0 +1,7 @@
+# list of market activites (with percentage dividends if is included else None)
+
+select (replace(str(?stock), "^.*/([^/]*)$", "$1") as ?symbol) ?company ?price ?dividend
+where {
+    ?stock rdf:type i:Stock; i:company ?company; i:price ?price.
+    optional { ?stock i:dividend ?dividend. }
+}

@@ -1,0 +1,12 @@
+# list of market activities without a dividend
+
+select (replace(str(?stock), "^.*/([^/]*)$", "$1") as ?symbol) ?company ?price 
+    (replace(str(?market), "^.*/([^/]*)$", "$1") as ?market) ?country
+where {
+    ?stock rdf:type i:Stock; i:company ?company; i:price ?price; i:market ?sm.
+    ?market rdf:type i:Market; i:country ?country.
+    minus {
+        ?stock rdf:type i:Stock; i:dividend ?d.
+    }
+    filter(?market=?sm)
+}

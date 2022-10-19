@@ -1,0 +1,19 @@
+# trades with invested amount greater than overall average
+
+select (replace(str(?ts), "^.*/([^/]*)$", "$1") as ?symbol) 
+    (?td as ?date) ?first_name ?last_name (?tup*?ta as ?invested)
+where {
+    ?trade rdf:type i:Trade; i:user ?tu; i:symbol ?ts; 
+        i:unitprice ?tup; i:date ?td; i:amount ?ta.
+    ?user rdf:type i:User; i:name[i:first ?first_name; i:last ?last_name].
+
+    filter(?tu = ?user)
+
+    {
+        select (avg(?s_tup*?s_ta) as ?avg_invested) where {
+            ?s_trade rdf:type i:Trade; i:unitprice ?s_tup; i:amount ?s_ta.
+        } 
+    }    
+}
+having (?tup*?ta > ?avg_invested)
+order by ?symbol

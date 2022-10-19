@@ -1,0 +1,14 @@
+# list of markets activities with a price less than 50 or greater than 200
+
+select (replace(str(?stock), "^.*/([^/]*)$", "$1") as ?symbol) ?company ?price
+where {
+    {
+        ?stock rdf:type i:Stock; i:company ?company; i:price ?price.
+        filter (?price < 50)
+    }
+    union
+    {
+        ?stock rdf:type i:Stock; i:company ?company; i:price ?price.
+        filter (?price > 200)
+    }
+}

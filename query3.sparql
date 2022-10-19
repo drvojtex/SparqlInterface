@@ -1,0 +1,12 @@
+# list of tatal invested amount of each trader
+
+select ?first_name ?last_name (sum(?tup*?ta) as ?total_invested)
+where {
+    ?trade rdf:type i:Trade; i:user ?tu; i:symbol ?ts; 
+        i:unitprice ?tup; i:amount ?ta.
+    ?user rdf:type i:User; i:name[i:first ?first_name; i:last ?last_name].
+
+    filter(?tu = ?user)
+}
+group by ?user
+order by desc(?total_invested)

@@ -1,0 +1,130 @@
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix s: <http://akcie.cz/portfolio/>.
+@prefix i: <http://akcie.cz/portfolio/terms#>.
+
+s:NYSE
+  rdf:type i:Market;
+  i:country "US".
+s:PSE
+  rdf:type i:Market;
+  i:country "CZ".
+s:LSE
+  rdf:type i:Market;
+  i:country "UK".
+
+s:MSFT
+  rdf:type i:Stock;
+  i:isin "US5949181045";
+  i:market s:NYSE;
+  i:price 280;
+  i:currency "USD";
+  i:company "Microsoft Corp";
+  i:dividend 1.13.
+s:GOOGL
+  rdf:type i:Stock;
+  i:isin "US02079K1079";
+  i:market s:NYSE;
+  i:price 98.64;
+  i:currency "USD";
+  i:company "Alphabet Inc.".
+s:TSLA
+  rdf:type i:Stock;
+  i:isin "US88160R1014";
+  i:market s:NYSE;
+  i:price 242.4;
+  i:currency "USD";
+  i:company "Tesla".
+s:AMD
+  rdf:type i:Stock;
+  i:isin "US0079031078";
+  i:market s:NYSE;
+  i:price 66.11;
+  i:currency "USD";
+  i:company "Advanced Micro Devices".
+s:NVDA
+  rdf:type i:Stock;
+  i:isin "US0079000000";
+  i:market s:NYSE;
+  i:price 880.5;
+  i:currency "USD";
+  i:company "Nividia Corp.";
+  i:dividend 0.2.
+s:EPD
+  rdf:type i:Stock;
+  i:isin "US0079031000";
+  i:market s:NYSE;
+  i:price 24.5;
+  i:currency "USD";
+  i:company "Enterprise Products L.P.".
+s:KMI
+  rdf:type i:Stock;
+  i:isin "US0000031000";
+  i:market s:NYSE;
+  i:price 16.4;
+  i:currency "USD";
+  i:company "Kinder Morgan Inc.".
+
+s:trade1
+  rdf:type i:Trade;
+  i:symbol s:MSFT;
+  i:user s:John123;
+  i:date "2021-10-21";
+  i:unitprice 330.2;
+  i:amount 23.
+s:trade2
+  rdf:type i:Trade;
+  i:symbol s:AMD;
+  i:user s:William4;
+  i:date "2022-10-22";
+  i:unitprice 88.2;
+  i:amount 23.
+s:trade3
+  rdf:type i:Trade;
+  i:symbol s:GOOGL;
+  i:user s:John123;
+  i:date "2021-11-21";
+  i:unitprice 144;
+  i:amount 5.
+s:trade4
+  rdf:type i:Trade;
+  i:symbol s:NVDA;
+  i:user s:John123;
+  i:date "2021-12-21";
+  i:unitprice 100;
+  i:amount 200.
+s:trade5
+  rdf:type i:Trade;
+  i:symbol s:TSLA;
+  i:user s:Kate098;
+  i:date "2021-12-21";
+  i:unitprice 71.2;
+  i:amount 88.
+s:trade6
+  rdf:type i:Trade;
+  i:symbol s:AMD;
+  i:user s:Kate098;
+  i:date "2022-04-17";
+  i:unitprice 110.2;
+  i:amount 91.
+s:trade7
+  rdf:type i:Trade;
+  i:symbol s:EPD;
+  i:user s:Kate098;
+  i:date "2021-06-17";
+  i:unitprice 23.2;
+  i:amount 105.
+
+s:Kate098
+  rdf:type i:User;
+  i:name [i:first "Kate" ; i:last "Lake"].
+s:William4
+  rdf:type i:User;
+  i:name [i:first "William" ; i:last "Smith"].
+s:John123
+  rdf:type i:User;
+  i:name [i:first "John"; i:last "Brown"].
+s:Harry99
+  rdf:type i:User;
+  i:name [i:first "Harry"; i:last "Morgan"].
+
