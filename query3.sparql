@@ -1,5 +1,9 @@
 # list of tatal invested amount of each trader
 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX s: <http://akcie.cz/portfolio/>
+PREFIX i: <http://akcie.cz/portfolio/terms#>
+
 select ?first_name ?last_name (sum(?tup*?ta) as ?total_invested)
 where {
     ?trade rdf:type i:Trade; i:user ?tu; i:symbol ?ts; 
@@ -8,5 +12,5 @@ where {
 
     filter(?tu = ?user)
 }
-group by ?user
+group by ?first_name ?last_name
 order by desc(?total_invested)

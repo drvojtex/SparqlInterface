@@ -1,5 +1,9 @@
 # list of market activites (with percentage dividends if is included else None)
 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX s: <http://akcie.cz/portfolio/>
+PREFIX i: <http://akcie.cz/portfolio/terms#>
+
 select (replace(str(?stock), "^.*/([^/]*)$", "$1") as ?symbol) ?company ?price ?dividend
 where {
     ?stock rdf:type i:Stock; i:company ?company; i:price ?price.

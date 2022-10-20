@@ -1,5 +1,9 @@
 # list of markets activities with a price less than 50 or greater than 200
 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX s: <http://akcie.cz/portfolio/>
+PREFIX i: <http://akcie.cz/portfolio/terms#>
+
 select (replace(str(?stock), "^.*/([^/]*)$", "$1") as ?symbol) ?company ?price
 where {
     {

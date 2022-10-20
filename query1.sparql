@@ -1,5 +1,9 @@
 # trades with invested amount greater than overall average
 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX s: <http://akcie.cz/portfolio/>
+PREFIX i: <http://akcie.cz/portfolio/terms#>
+
 select (replace(str(?ts), "^.*/([^/]*)$", "$1") as ?symbol) 
     (?td as ?date) ?first_name ?last_name (?tup*?ta as ?invested)
 where {
