@@ -1,0 +1,15 @@
+select ?n ?b ?e ?a
+where {
+    ?c rdf:type b:Client; b:name ?n; b:balance ?b .
+    optional {?c b:card ?e} .
+    optional {?c b:age ?a} .
+    OPTIONAL {
+        ?c b:account [b:type ?t] .
+        FILTER(?t = "personal")
+    }.
+    FILTER(xsd:integer(?a) >= 30 &&
+        xsd:integer(?a) <= 40 && 
+        !bound(?t)
+    )
+}
+ORDER BY DESC(?n) ASC(?b)

@@ -1,0 +1,16 @@
+# list of markets activities with a price less than 50 or greater than 200
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX s: <http://akcie.cz/portfolio/>
+PREFIX i: <http://akcie.cz/portfolio/terms#>
+
+select ?fname ?lname (sum(?amount) as ?amnt)
+where {
+    ?user rdf:type i:User; 
+        i:name[i:first ?fname; i:last ?lname].
+    ?trade rdf:type i:Trade;
+        i:user ?user;
+        i:amount ?amount.
+}
+group by ?fname
+having (sum(?amount) > 100)

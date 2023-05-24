@@ -1,0 +1,11 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix b: <http://bank.cz> .
+
+b:client1 rdf:type b:Client; b:name "Petra"; b:balance "1000" ; b:card "2020/04".
+b:client1 b:account [b:number "1100110011/1234"; b:type "savings"],
+                    [b:number "1100110022/1234"; b:type "personal"] .
+b:client2 rdf:type b:Client; b:name "Michal"; b:balance "2000" ; b:age "35" .
+b:client3 rdf:type b:Client; b:name "Iveta"; b:balance "5000" ; b:age "32";
+    b:card "2018/01"; b:account _:account1 .
+_:account1 b:number "2200110011/1234" ; b:type "savings" .
+b:client4 rdf:type b:Client; b:name "Tom"; b:balance "10000" .

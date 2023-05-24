@@ -1,0 +1,12 @@
+SELECT 
+?l ?r ?len ?d
+WHERE {
+    ?l rdf:type t:Line; t:route ?r; t:distance ?len.
+    optional {
+        ?l t:connection [t:day ?d_tmp].
+        filter (?d_tmp = "TUE")
+    }.
+    optional {?l t:connection [t:day ?d]}
+    filter ( !bound(?d_tmp) )
+}
+ORDER BY DESC(?len) ASC(?r)

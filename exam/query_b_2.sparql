@@ -1,0 +1,5 @@
+select ?n
+where {
+    ?c rdf:type b:Client; b:name ?n.
+}
+ORDER BY ASC(?n)

@@ -1,0 +1,128 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix s: <http://nosql.opendata.cz/school/> .
+@prefix i: <http://nosql.opendata.cz/school/terms#> .
+
+
+s:student2
+    rdf:type i:Student ;
+    i:number "2" ;
+    i:name [ i:first "Petr" ; i:last "Skoda" ] ;
+    i:email "skoda@uni.cz" ;
+    i:web "http://www.uni.cz/~skoda/" .
+s:student4
+    rdf:type i:Student ;
+    i:number "4" ;
+    i:name [ i:first "Tomas" ; i:last "Knap" ] ;
+    i:email "knap@uni.cz" .
+s:student6
+    rdf:type i:Student ;
+    i:number "6" ;
+    i:name [ i:first "Jakub" ; i:last "Klimek" ] ;
+    i:web "http://www.uni.cz/~klimek/" .
+s:student8
+    rdf:type i:Student ;
+    i:number "8" ;
+    i:name [ i:first "Jakub" ; i:last "Starka" ] .
+
+
+s:student2
+    i:enroll [ i:course s:course7 ; i:semester s:semester211 ; i:result "2" ] .
+
+
+s:course7
+    rdf:type i:Course ;
+    i:title "XML Technologies" ;
+    i:code "NPRG036" ;
+    i:prerequisity s:course5 ; i:prerequisity s:course3 .
+s:course5
+    rdf:type i:Course ;
+    i:title "Internet" ;
+    i:code "NSWI096" ;
+    i:prerequisity s:course3 .
+s:course3
+    rdf:type i:Course ;
+    i:title "Programming I" ;
+    i:code "NPRG030" .
+s:course1
+    rdf:type i:Course ;
+    i:title "Computer Networks" ;
+    i:code "NSWI090" .
+
+
+s:semester211
+    i:year "2021/22" ;
+    i:period "winter" .
+s:semester212
+    i:year "2021/22" ;
+    i:period "summer" .
+
+
+s:teacher5
+    rdf:type i:Teacher ;
+    i:name [ i:first "Irena" ; i:last "Holubova" ] ;
+    i:affiliation s:department8 .
+s:teacher7
+    rdf:type i:Teacher ;
+    i:name [ i:first "Martin" ; i:last "Necasky" ] ;
+    i:affiliation s:department8 .
+
+
+s:teacher5
+    i:teach [
+        i:course s:course7 ;
+        i:semester s:semester211 ;
+        i:day "MON" ;
+        i:time "10:40" ;
+        i:place s:roomS5 ;
+        i:length "90" ;
+    ] .
+s:teacher5
+    i:teach [
+        i:course s:course5 ;
+        i:semester s:semester211 ;
+        i:day "WED" ;
+        i:time "15:40" ;
+        i:place s:roomS3 ;
+        i:length "90" ;
+    ] .
+s:teacher5
+    i:teach [
+        i:course s:course5 ;
+        i:semester s:semester211 ;
+        i:day "FRI" ;
+        i:time "12:20" ;
+        i:place s:roomS1 ;
+        i:length "90" ;
+    ] .
+s:teacher7
+    i:teach [
+        i:course s:course1 ;
+        i:semester s:semester211 ;
+        i:day "TUE" ;
+        i:time "9:00" ;
+        i:place s:roomS5 ;
+        i:length "90" ;
+    ] .
+
+
+s:department8
+    i:name "Department of Software Engineering" ;
+    i:id "DSE" .
+
+
+s:roomS5
+    i:number "S5" ;
+    i:building s:buildingS ;
+    i:capacity "118" .
+s:roomS3
+    i:number "S3" ;
+    i:building s:buildingS ;
+    i:capacity "116" .
+s:roomS1
+    i:number "S1" ;
+    i:building s:buildingS ;
+    i:capacity "40" .
+
+
+s:buildingS
+    i:address [ i:street "Malostranske namesti 25" ; i:city "Prague" ] .

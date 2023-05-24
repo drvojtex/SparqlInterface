@@ -1,0 +1,15 @@
+SELECT 
+?r ?len ?d ?type WHERE {
+    ?l rdf:type t:Line; t:route ?r; t:distance ?len.
+    optional {?l t:discount ?d}.
+    optional {?l t:type ?type}.
+    OPTIONAL {
+        ?l t:connection [t:day ?tue] .
+        FILTER(?tue = "TUE")
+    }.
+    FILTER(?len >= 100 &&
+        ?len <= 200 && 
+        !bound(?tue)
+    )
+}
+ORDER BY DESC(?len) ASC(?r)

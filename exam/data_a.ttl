@@ -1,0 +1,25 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix t: <http://tickets.cz> .
+
+t:line1 rdf:type t:Line; 
+    t:route 'Praha - Liberec'; 
+    t:distance 100 ;
+    t:fare 'adult' ; 
+    t:discount '0 %';
+    t:connection 
+        [ t:from 'Liberec' ; t:day 'MON' ; t:time '10:00' ],
+        [ t:from 'Praha' ; t:day 'MON' ; t:time '12:00' ] .
+t:line2 rdf:type t:Line ; 
+    t:route 'Praha - Brno'; 
+    t:distance 210 ; 
+    t:type 'train' .
+t:line3 rdf:type t:Line; 
+    t:route 'Praha - Plzen' ; 
+    t:distance 95 ; 
+    t:type 'coach' ; 
+    t:fare 'student' ; 
+    t:discount '50 %';
+    t:connection _:connection1.
+
+_:connection1
+    t:from "Plzen" ; t:day "TUE" ; t:time "8:00".

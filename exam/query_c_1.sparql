@@ -1,0 +1,5 @@
+select ?c ?d
+where {
+    ?p rdf:type i:Course; i:code ?c .
+    ?e i:course ?p; i:day ?d .
+}
